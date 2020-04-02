@@ -1,0 +1,12 @@
+/Users/didasmbalanya/Desktop/Personal/sprintter/src/.eslintignore
+/node_modules/* 
+
+# Ignore built files except build/index.js
+build/*
+!build/index.js
+
+src/database/migrations/*
+
+src/load-env.ts
+src/modules/shared/base.service.ts
+
