@@ -1,6 +1,10 @@
-import { importSchema } from 'graphql-import';
-import * as path from 'path';
+import * as path from "path";
+import { fileLoader, mergeTypes } from "merge-graphql-schemas";
 
+const typesArray = fileLoader(path.join(__dirname, "."), { recursive: true });
+
+
+export const typeDefs = mergeTypes(typesArray, { all: true });
+console.log(typeDefs)
 export { resolvers } from './resolvers';
-const schemaPath = path.join(__dirname, './schema.graphql')
-export const typeDefs = importSchema(schemaPath); // or .gql or glob pattern like **/*.graphql
+
