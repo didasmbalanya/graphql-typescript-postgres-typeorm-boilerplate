@@ -9,6 +9,7 @@
     "@types/node": "^13.9.8",
     "@types/uuid": "^7.0.2",
     "gql2ts": "^1.10.1",
+    "graphql-request": "^1.8.2",
     "jest": "^25.2.4",
     "nodemon": "^2.0.2",
     "ts-jest": "^25.3.0",
@@ -25,9 +26,10 @@
     "uuid": "^7.0.3"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "test":"jest",
-    "dev": "nodemon --exec ts-node --files src/index.ts ",
+    "start": "ts-node --files src/index.ts",
+    "test": "jest",
+    "test-server": "NODE_ENV=test ts-node --files src/index.ts",
+    "dev": "NODE_ENV=test nodemon --exec ts-node --files src/index.ts ",
     "gen-schema-types": "gql2ts src/graphql/schema.graphql -o src/types/schema.d.ts"
   }
 }
