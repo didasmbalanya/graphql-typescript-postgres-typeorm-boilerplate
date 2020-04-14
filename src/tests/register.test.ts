@@ -6,7 +6,7 @@ import { GraphQLClient } from 'graphql-request';
 const user = {
   username: 'obione',
   email: 'obiemail@yahoo.com',
-  password: 'notpassword',
+  password: 'password',
 };
 
 const mutation = `

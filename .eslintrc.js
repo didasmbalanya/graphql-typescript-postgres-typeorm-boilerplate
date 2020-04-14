@@ -36,5 +36,8 @@ module.exports = {
     ],
     "import/no-cycle": 0,
     'object-curly-newline': 'off'
-  }
+  },
+  "env": {
+    "jest": true
+}
 };
