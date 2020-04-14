@@ -8,9 +8,11 @@
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.8",
     "@types/uuid": "^7.0.2",
+    "cross-env": "^7.0.2",
     "gql2ts": "^1.10.1",
     "jest": "^25.2.4",
     "nodemon": "^2.0.2",
+    "request": "^2.88.2",
     "ts-jest": "^25.3.0",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
@@ -27,9 +29,10 @@
     "uuid": "^7.0.3"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node --files src/index.ts",
+    "test-server": "cross-env NODE_ENV=test ts-node --files src/index.ts",
     "test": "jest",
-    "dev": "nodemon --exec ts-node --files src/index.ts ",
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node --files src/index.ts ",
     "gen-schema-types": "gql2ts src/graphql/schema.graphql -o src/types/schema.d.ts"
   }
 }

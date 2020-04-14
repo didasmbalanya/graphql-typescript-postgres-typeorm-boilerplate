@@ -1,9 +1,14 @@
 import 'reflect-metadata';
 import { GraphQLServer } from 'graphql-yoga';
 import { resolvers, typeDefs } from './graphql';
-import { createConnection } from 'typeorm';
+import { createConnTypeOrm } from './utils/typeormConn';
+
 
 const server = new GraphQLServer({ typeDefs, resolvers });
-createConnection().then(() => {
-  server.start(() => console.log('Server is running on localhost:4000'));
-});
+
+const startServer = async() => {
+  await createConnTypeOrm()
+  await server.start(() => console.log('Server is running on localhost:4000'));
+};
+
+startServer();
