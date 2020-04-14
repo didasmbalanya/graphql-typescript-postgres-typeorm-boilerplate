@@ -3,12 +3,14 @@ import { GraphQLServer } from 'graphql-yoga';
 import { resolvers, typeDefs } from './graphql';
 import { createConnTypeOrm } from './utils/typeormConn';
 
-
 const server = new GraphQLServer({ typeDefs, resolvers });
 
-const startServer = async() => {
-  await createConnTypeOrm()
-  await server.start(() => console.log('Server is running on localhost:4000'));
+const options = {
+  port: process.env.NODE_ENV === 'test' ? 0 : 4000,
 };
-
-startServer();
+export const startServer = async () => {
+  await createConnTypeOrm();
+  return await server.start(options, ({ port }) => {
+    console.log(`Server started, listening on port ${port}`);
+  });
+};
