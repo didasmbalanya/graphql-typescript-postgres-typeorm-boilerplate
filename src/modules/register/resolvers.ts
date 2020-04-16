@@ -1,6 +1,6 @@
 import { IResolvers } from 'graphql-tools';
 import * as bcrypt from 'bcrypt';
-import { User } from '../entity/User';
+import { User } from '../../entity/User';
 
 export const resolvers: IResolvers = {
   Query: {

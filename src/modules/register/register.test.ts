@@ -1,7 +1,7 @@
-import { startServer } from './../index';
-import { User } from './../entity/User';
 import { GraphQLClient } from 'graphql-request';
-// run server before running test
+import { startServer } from '../../index';
+import { User } from '../../entity/User';
+
 
 const user = {
   username: 'obione',
