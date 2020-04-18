@@ -1,8 +1,10 @@
+#import Error from '../../shared/shared-schema.graphql'
+
 type Query {
   hello(name: String!): String!
 }
 
 type Mutation {
-  register(username: String!, email: String!, password: String!): Boolean!
+  register(username: String!, email: String!, password: String!): [Error!] 
 }
 
