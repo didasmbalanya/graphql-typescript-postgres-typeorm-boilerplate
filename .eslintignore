@@ -9,4 +9,4 @@ src/database/migrations/*
 
 src/load-env.ts
 src/modules/shared/base.service.ts
-
+src/test-setup/*

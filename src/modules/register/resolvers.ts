@@ -1,9 +1,10 @@
 import { IResolvers } from 'graphql-tools';
 import * as bcrypt from 'bcrypt';
 import * as yup from 'yup';
-import { User } from '../../entity/User';
+import { User } from '../../entity/user';
 import { fomartYupErr } from '../../shared/formatValidationError';
 import { duplicateEmail } from './errorMessages';
+import { createConfirmationLink } from '../../utils/confirmEmailLink';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -18,7 +19,11 @@ export const resolvers: IResolvers = {
   },
 
   Mutation: {
-    register: async (_, args: GQL.IRegisterOnMutationArguments) => {
+    register: async (
+      _,
+      args: GQL.IRegisterOnMutationArguments,
+      { redis, url },
+    ) => {
       try {
         await schema.validate(args, { abortEarly: false });
       } catch (error) {
@@ -39,6 +44,9 @@ export const resolvers: IResolvers = {
       });
 
       await user.save();
+      const urlVal = url || process.env.BACKEND_URL;
+      await createConfirmationLink(urlVal, user.id, redis);
+
       // return !!saved;
       return null;
     },

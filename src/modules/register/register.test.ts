@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 import { startServer } from '../../index';
-import { User } from '../../entity/User';
+import { User } from '../../entity/user';
 import { duplicateEmail } from './errorMessages';
 
 const user = {
