@@ -20,12 +20,16 @@ mutation {
 const mutation = mutationGen(user.username, user.email, user.password);
 
 let client: GraphQLClient;
+let app: import("http").Server | import("https").Server;
 beforeAll(async () => {
-  const app = await startServer();
+  app = await startServer();
   const { port }: any = app.address();
   const host = `http://localhost:${port}`;
   client = new GraphQLClient(host);
 });
+afterAll(async () => {
+  app.close()
+})
 
 test('creates a user', async () => {
   const res = await client.request(mutation);

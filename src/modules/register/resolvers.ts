@@ -5,6 +5,7 @@ import { User } from '../../entity/user';
 import { fomartYupErr } from '../../shared/formatValidationError';
 import { duplicateEmail } from './errorMessages';
 import { createConfirmationLink } from '../../utils/confirmEmailLink';
+import { sendWIthNodeMailer } from './../../utils/sendEmail';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -45,9 +46,9 @@ export const resolvers: IResolvers = {
 
       await user.save();
       const urlVal = url || process.env.BACKEND_URL;
-      await createConfirmationLink(urlVal, user.id, redis);
+      const link = await createConfirmationLink(urlVal, user.id, redis);
+      await sendWIthNodeMailer(email, link);
 
-      // return !!saved;
       return null;
     },
   },
