@@ -6,6 +6,7 @@ import { createConnTypeOrm } from './utils/typeormConn';
 import { ContextParameters } from 'graphql-yoga/dist/types';
 
 export const startServer = async () => {
+  
   const server = new GraphQLServer({
     schema: schemaGen(),
     context: ({ request }: ContextParameters) => ({

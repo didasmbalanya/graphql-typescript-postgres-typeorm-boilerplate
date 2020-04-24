@@ -35,6 +35,7 @@ export const resolvers: IResolvers = {
         where: { email },
         select: ['id'],
       });
+
       if (foundUser) return [{ path: 'email', message: duplicateEmail }];
 
       const hashedPassword = await bcrypt.hash(password, 10);

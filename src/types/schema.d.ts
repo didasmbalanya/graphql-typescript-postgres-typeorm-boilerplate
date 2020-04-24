@@ -26,18 +26,30 @@ hello: string;
 }
 
 interface IHelloOnQueryArguments {
-name?: string | null;
+name: string;
 }
 
 interface IMutation {
 __typename: "Mutation";
-register: boolean;
+login: Array<IError> | null;
+register: Array<IError> | null;
+}
+
+interface ILoginOnMutationArguments {
+email: string;
+password: string;
 }
 
 interface IRegisterOnMutationArguments {
 username: string;
 email: string;
 password: string;
+}
+
+interface IError {
+__typename: "Error";
+path: string;
+message: string;
 }
 }
 

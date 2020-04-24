@@ -43,6 +43,6 @@
     "start": "ts-node --files src/app.ts",
     "test": "cross-env NODE_ENV=test jest --forceExit",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node --files src/app.ts ",
-    "gen-schema-types": "gql2ts src/graphql/schema.graphql -o src/types/schema.d.ts"
+    "gql2ts": "ts-node --files src/scripts/createTypes.ts"
   }
 }

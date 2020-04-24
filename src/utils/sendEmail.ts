@@ -6,6 +6,9 @@ import * as nodemailer from 'nodemailer';
 // using nodemailer
 
 export const sendWIthNodeMailer = async (recipient: string, url: string) => {
+  if (process.env.NODE_ENV === 'test') {
+    return null;
+  }
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',

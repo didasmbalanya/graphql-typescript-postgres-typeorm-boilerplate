@@ -5,11 +5,11 @@ import { duplicateEmail } from './errorMessages';
 
 const user = {
   username: 'obione',
-  email: 'obiemail@yah00.com',
+  email: 'obiemail1@yah00.com',
   password: 'password1234',
 };
 
-const mutationGen = (username: string, email: string, password: string) => `
+export const registerMutationGen = (username: string, email: string, password: string) => `
 mutation {
   register(username:"${username}", email:"${email}", password:"${password}"){
     path
@@ -17,7 +17,7 @@ mutation {
   }
 }`;
 
-const mutation = mutationGen(user.username, user.email, user.password);
+const mutation = registerMutationGen(user.username, user.email, user.password);
 
 let client: GraphQLClient;
 let app: import("http").Server | import("https").Server;
@@ -50,7 +50,7 @@ test('Return error when user already exist', async () => {
 });
 
 test('Validation Error', async () => {
-  const mutation2 = mutationGen('Dexter', 'dexter', 'passy');
+  const mutation2 = registerMutationGen('Dexter', 'dexter', 'passy');
   const res = await client.request(mutation2);
   expect(res.register[0].path).toBe('email');
 });
