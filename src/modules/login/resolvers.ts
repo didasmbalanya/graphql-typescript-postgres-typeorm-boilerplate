@@ -1,3 +1,5 @@
+import { userSessionIdPrefix } from './../../utils/constants';
+import { Context } from './../../types/graphql-utils';
 import { IResolvers } from 'graphql-tools';
 import * as bcrypt from 'bcrypt';
 import { User } from '../../entity/user';
@@ -7,17 +9,11 @@ import {
 } from './../../shared/responseMessages';
 
 export const resolvers: IResolvers = {
-  Query: {
-    hello: (_, { name }: GQL.IHelloOnQueryArguments) => {
-      return `Hello ${name} `;
-    },
-  },
-
   Mutation: {
     login: async (
       _,
       { email, password }: GQL.ILoginOnMutationArguments,
-      { session },
+      { session, redis, req }: Context,
     ) => {
       const found = await User.findOne({
         where: { email },
@@ -30,6 +26,9 @@ export const resolvers: IResolvers = {
 
       // after successfull login
       session.userId = found.id;
+      if (req.sessionID) {
+        redis.lpush(`${userSessionIdPrefix}${found.id}`, req.sessionID);
+      }
 
       return null;
     },

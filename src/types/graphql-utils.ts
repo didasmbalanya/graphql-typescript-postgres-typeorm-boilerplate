@@ -1,17 +1,19 @@
 import { Redis } from 'ioredis';
 
-interface Session extends Express.Session{
-  userId: string
+export interface Session extends Express.Session {
+  userId: string;
+}
+
+export interface Context {
+  session: Session;
+  redis: Redis;
+  req: Express.Request;
 }
 
 export type Resolver = (
   parent: any,
   args: any,
-  context: {
-    redis: Redis,
-    url: String,
-    session: Session,
-  },
+  context: Context,
   info: any,
 ) => any;
 
@@ -19,10 +21,6 @@ export type GQLMiddlewareFunc = (
   resolver: Resolver,
   parent: any,
   args: any,
-  context: {
-    redis: Redis,
-    url: String,
-    session: Session,
-  },
+  context: Context,
   info: any,
 ) => any;

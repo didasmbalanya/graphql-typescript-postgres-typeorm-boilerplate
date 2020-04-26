@@ -6,6 +6,7 @@ import { redis } from './utils/redis';
 import { confirmEmail } from './routes/confirmEmail';
 import { createConnTypeOrm } from './utils/typeormConn';
 import { ContextParameters } from 'graphql-yoga/dist/types';
+import { redisSessionPrefix } from './utils/constants';
 
 export const startServer = async () => {
   const server = new GraphQLServer({
@@ -14,6 +15,7 @@ export const startServer = async () => {
       redis,
       url: `${request.protocol}://${request.get('host')}`,
       session: request.session,
+      req: request,
     }),
   });
   await createConnTypeOrm();
@@ -22,7 +24,8 @@ export const startServer = async () => {
   server.express.use(
     session({
       store: new RedisStore({
-        client: redis
+        client: redis,
+        prefix:redisSessionPrefix
       }),
       name: 'myId',
       secret: process.env.SECRET as string,
@@ -39,7 +42,7 @@ export const startServer = async () => {
 
   const cors = {
     credentials: true,
-    origin: process.env.NODE_ENV === 'test' ? "*" : process.env.FRONTEND_HOST,
+    origin: process.env.NODE_ENV === 'test' ? '*' : process.env.FRONTEND_HOST,
   };
   const options = {
     port: process.env.NODE_ENV === 'test' ? 0 : 4000,
