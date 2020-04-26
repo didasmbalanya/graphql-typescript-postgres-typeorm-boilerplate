@@ -1,0 +1,26 @@
+@localHost1=http://localhost:4000
+@localHost2=http://localhost:4000
+
+POST {{localHost1}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  login(email: "jldhvpjucaqifweugy@awdrt.com", password: "mypassword"){
+    path
+    message
+  }
+}
+
+###
+
+POST {{localHost1}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query {
+  me {
+    username
+    email
+  }
+}
