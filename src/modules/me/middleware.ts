@@ -6,6 +6,7 @@ export default async (
   context: any,
   info: any,
 ) => {
+  // logger(parent, args, context, info)
   // before middleware
   const result = await resolver(parent, args, context, info);
   // after

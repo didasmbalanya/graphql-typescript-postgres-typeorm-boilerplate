@@ -24,3 +24,12 @@ query {
     email
   }
 }
+
+###
+POST {{localHost1}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  logout
+}
