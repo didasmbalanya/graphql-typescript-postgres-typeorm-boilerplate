@@ -1,6 +1,6 @@
-import { redis } from "../utils/redis";
-import { User } from "../entity/user";
-import { Response } from "express";
+import { redis } from '../utils/redis';
+import { User } from '../entity/user';
+import { Response } from 'express';
 
 export const confirmEmail = async (req: any, res: Response) => {
   const { id } = req.params;
@@ -18,4 +18,14 @@ export const confirmEmail = async (req: any, res: Response) => {
       message: 'Something went wrong',
     },
   });
-}
+};
+
+export const printKey = async (req: any, res: Response) => {
+  const { id } = req.params;
+
+  return res.status(200).send({
+    data: {
+      message: `will redirect to frontend url with param: ${id}`,
+    },
+  });
+};

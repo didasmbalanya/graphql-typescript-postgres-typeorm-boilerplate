@@ -1,0 +1,11 @@
+#import Error from '../../shared/shared-schema.graphql'
+
+type Query {
+  hello(name: String!): String!
+}
+
+type Mutation {
+  forgotPassword(email: String!): [Error!] 
+  changePassword(newPassword: String!, key: String!): [Error!]
+}
+

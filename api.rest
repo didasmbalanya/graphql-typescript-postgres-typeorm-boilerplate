@@ -6,7 +6,7 @@ Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
 mutation {
-  login(email: "jldhvpjucaqifweugy@awdrt.com", password: "mypassword"){
+  login(email: "wohilo9262@homedepinst.com", password: "mypassword"){
     path
     message
   }
@@ -32,4 +32,16 @@ X-REQUEST-TYPE: GraphQL
 
 mutation {
   logout
+}
+###
+
+POST {{localHost1}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  forgotPassword(email:"wohilo9262@homedepinst.com"){
+    path
+    message
+  }
 }

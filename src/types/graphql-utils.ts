@@ -8,6 +8,7 @@ export interface Context {
   session: Session;
   redis: Redis;
   req: Express.Request;
+  url: string
 }
 
 export type Resolver = (

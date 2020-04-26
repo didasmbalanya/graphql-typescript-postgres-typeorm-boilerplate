@@ -3,7 +3,7 @@ import { GraphQLServer } from 'graphql-yoga';
 import * as session from 'express-session';
 import * as connectSession from 'connect-redis';
 import { redis } from './utils/redis';
-import { confirmEmail } from './routes/confirmEmail';
+import { confirmEmail, printKey } from './routes/confirmEmail';
 import { createConnTypeOrm } from './utils/typeormConn';
 import { ContextParameters } from 'graphql-yoga/dist/types';
 import { redisSessionPrefix } from './utils/constants';
@@ -39,6 +39,7 @@ export const startServer = async () => {
     }),
   );
   server.express.get('/confirm/:id', confirmEmail);
+  server.express.get('/key/:id', printKey);
 
   const cors = {
     credentials: true,
