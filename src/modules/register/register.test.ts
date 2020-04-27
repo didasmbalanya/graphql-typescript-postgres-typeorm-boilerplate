@@ -6,7 +6,7 @@ import { duplicateEmail } from './errorMessages';
 const user = {
   username: 'obione',
   email: 'obiemail1@yah00.com',
-  password: 'password1234',
+  password: 'Password1234',
 };
 
 export const registerMutationGen = (username: string, email: string, password: string) => `

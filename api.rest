@@ -6,7 +6,19 @@ Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
 mutation {
-  login(email: "wohilo9262@homedepinst.com", password: "mypassword"){
+  register(email: "vapehe1245@iopmail.com", password: "mypassword", username:"obiwewe"){
+    path
+    message
+  }
+}
+###
+
+POST {{localHost1}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  login(email: "vapehe1245@iopmail.com", password: "Newpass12"){
     path
     message
   }
@@ -40,7 +52,19 @@ Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
 mutation {
-  forgotPassword(email:"wohilo9262@homedepinst.com"){
+  forgotPassword(email:"vapehe1245@iopmail.com"){
+    path
+    message
+  }
+}
+###
+
+POST {{localHost1}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation {
+  changePassword(newPassword:"Newpass12", key:"6a0e4160-6f52-4601-82db-ca3bae88441e"){
     path
     message
   }

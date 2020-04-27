@@ -1,3 +1,4 @@
+import { passwordSchema } from './../../shared/formatValidationError';
 import { createUniqueLink } from './../../utils/confirmEmailLink';
 import { IResolvers } from 'graphql-tools';
 import * as bcrypt from 'bcrypt';
@@ -9,7 +10,7 @@ import { sendWIthNodeMailer, confirmEmailData } from './../../utils/sendEmail';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().max(255).min(5).notOneOf(['password']).required(),
+  password: passwordSchema,
 });
 
 export const resolvers: IResolvers = {

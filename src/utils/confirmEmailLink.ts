@@ -7,7 +7,8 @@ export const createUniqueLink = async (
   redis: Redis.Redis,
   actionText: string = 'confirm',
 ): Promise<string> => {
+  const time = actionText.toLowerCase() === 'key' ? 60 * 20 : 60 * 60 * 24;
   const id = v4();
-  await redis.set(id, userId, 'ex', 60 * 60 * 24);
+  await redis.set(id, userId, 'ex', time);
   return `${url}/${actionText}/${id}`;
 };
