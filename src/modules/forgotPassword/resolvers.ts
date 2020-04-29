@@ -39,7 +39,7 @@ export const resolvers: IResolvers = {
         'key',
       );
       const res = await sendWIthNodeMailer(
-        found.email,
+        found.email as string,
         frontEndlink,
         PasswordResetEmail,
       );

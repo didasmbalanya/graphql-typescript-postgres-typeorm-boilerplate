@@ -22,7 +22,7 @@ export const resolvers: IResolvers = {
 
       if (!found) return invalidLogin;
       if (found.locked) return lockedError;
-      const valid = await bcrypt.compare(password, found.password);
+      const valid = await bcrypt.compare(password, found.password || '');
       if (!valid) return invalidLogin;
       if (!found.confirmed) return unConfirmedEmail;
 

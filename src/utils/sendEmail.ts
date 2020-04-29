@@ -1,7 +1,6 @@
 import * as nodemailer from 'nodemailer';
 
 // using nodemailer
-
 export const sendWIthNodeMailer = async (
   recipient: string,
   url: string,

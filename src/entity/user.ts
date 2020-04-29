@@ -8,11 +8,11 @@ export class User extends BaseEntity {
   @Column('varchar', { length: 255 })
   username: string;
 
-  @Column('varchar', { length: 255 })
-  email: string;
+  @Column('varchar', { length: 255, nullable: true })
+  email: string | null;
 
-  @Column('text')
-  password: string;
+  @Column('text', { nullable: true })
+  password: string | null;
 
   @Column('boolean', { default: false })
   confirmed: boolean;
@@ -20,4 +20,6 @@ export class User extends BaseEntity {
   @Column('boolean', { default: false })
   locked: boolean;
 
+  @Column('text', { nullable: true })
+  twitterId: string | null;
 }
