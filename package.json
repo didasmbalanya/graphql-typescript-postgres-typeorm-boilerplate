@@ -50,7 +50,7 @@
     "reflect-metadata": "^0.1.10",
     "request-promise": "^4.2.5",
     "sparkpost": "^2.1.4",
-    "typeorm": "0.2.24",
+    "typeorm": "0.2.25",
     "uuid": "^7.0.3",
     "yup": "^0.28.3"
   },
