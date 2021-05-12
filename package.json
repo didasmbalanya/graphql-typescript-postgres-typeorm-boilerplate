@@ -41,7 +41,7 @@
     "graphql-yoga": "^1.18.3",
     "ioredis": "^4.16.2",
     "merge-graphql-schemas": "^1.7.7",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "passport": "^0.4.1",
     "passport-twitter": "^1.0.4",
     "pg": "^8.0.0",
